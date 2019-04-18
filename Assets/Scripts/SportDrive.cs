@@ -20,7 +20,7 @@ public class SportDrive : MonoBehaviour
 
     int maxTransmission = 5;
     float accel;
-    float steerLimitAngle = 25f;
+    float steerLimitAngle = 35f;
     float slowing = 2500f;
     float stopTorque = 5000f;
     private int curentTransmission = 1;
