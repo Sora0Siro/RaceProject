@@ -1,0 +1,258 @@
+fileFormatVersion: 2
+guid: b2a19e27779fecb4bab1a033a32642b8
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Camera_Perspective12
+    100002: Engine
+    100004: FL_Tire
+    100006: FL_Wheel
+    100008: FR_Tire
+    100010: FR_Wheel
+    100012: Glass
+    100014: Interior
+    100016: Interior_Effects
+    100018: //RootNode
+    100020: Light_Side
+    100022: LightAssemblies
+    100024: MainBody
+    100026: MainTrim
+    100028: Mirrors
+    100030: Null
+    100032: Plane
+    100034: R_Tires
+    100036: R_Wheels
+    100038: SpotLight
+    100040: SpotLight1
+    100042: SpotLight2
+    100044: Underside
+    100046: V-Ray Area Light
+    400000: Camera_Perspective12
+    400002: Engine
+    400004: FL_Tire
+    400006: FL_Wheel
+    400008: FR_Tire
+    400010: FR_Wheel
+    400012: Glass
+    400014: Interior
+    400016: Interior_Effects
+    400018: //RootNode
+    400020: Light_Side
+    400022: LightAssemblies
+    400024: MainBody
+    400026: MainTrim
+    400028: Mirrors
+    400030: Null
+    400032: Plane
+    400034: R_Tires
+    400036: R_Wheels
+    400038: SpotLight
+    400040: SpotLight1
+    400042: SpotLight2
+    400044: Underside
+    400046: V-Ray Area Light
+    2000000: Camera_Perspective12
+    2100000: BrushedMetal_Physical
+    2100002: 878d9e
+    2100004: 332ab
+    2100006: 888890
+    2100008: Interior_Physical
+    2100010: Tires_Physical
+    2100012: CarPaint_Physical
+    2100014: Underbody_Physical
+    2100016: RedLights_Physical
+    2100018: Glass_Physical
+    2300000: Engine
+    2300002: FL_Tire
+    2300004: FL_Wheel
+    2300006: FR_Tire
+    2300008: FR_Wheel
+    2300010: Glass
+    2300012: Interior
+    2300014: Interior_Effects
+    2300016: Light_Side
+    2300018: LightAssemblies
+    2300020: MainBody
+    2300022: MainTrim
+    2300024: Mirrors
+    2300026: Plane
+    2300028: R_Tires
+    2300030: R_Wheels
+    2300032: Underside
+    3300000: Engine
+    3300002: FL_Tire
+    3300004: FL_Wheel
+    3300006: FR_Tire
+    3300008: FR_Wheel
+    3300010: Glass
+    3300012: Interior
+    3300014: Interior_Effects
+    3300016: Light_Side
+    3300018: LightAssemblies
+    3300020: MainBody
+    3300022: MainTrim
+    3300024: Mirrors
+    3300026: Plane
+    3300028: R_Tires
+    3300030: R_Wheels
+    3300032: Underside
+    4300000: FR_Wheel
+    4300002: Plane
+    4300004: R_Wheels
+    4300006: Mirrors
+    4300008: Engine
+    4300010: FL_Wheel
+    4300012: Interior_Effects
+    4300014: Interior
+    4300016: FR_Tire
+    4300018: MainBody
+    4300020: LightAssemblies
+    4300022: Underside
+    4300024: Light_Side
+    4300026: Glass
+    4300028: FL_Tire
+    4300030: MainTrim
+    4300032: R_Tires
+    7400000: Base stack
+    9500000: //RootNode
+    10800000: SpotLight
+    10800002: SpotLight1
+    10800004: SpotLight2
+    10800006: V-Ray Area Light
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 332ab
+    second: {fileID: 2100000, guid: da4a400f6ad0232498d780d370ea4977, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 878d9e
+    second: {fileID: 2100000, guid: 1898c0e0f907b6b4cbca09e4aebfc70d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 888890
+    second: {fileID: 2100000, guid: 48df89c2c8ad8cb469dd823409bc5bef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BrushedMetal_Physical
+    second: {fileID: 2100000, guid: 85a5693b6fc03e748b233dac1319a6bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CarPaint_Physical
+    second: {fileID: 2100000, guid: 9be5305b666cf2a4aa9c466698d51720, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass_Physical
+    second: {fileID: 2100000, guid: 35498953cbab96240bfcc8d912f18932, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Interior_Physical
+    second: {fileID: 2100000, guid: d9a388cf8f53f9a4d83678fc4f331153, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RedLights_Physical
+    second: {fileID: 2100000, guid: b74957d1c3a89ce4fb4e3d3c09295e27, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tires_Physical
+    second: {fileID: 2100000, guid: da19c5198823c4a42ba86896c21ccbfe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Underbody_Physical
+    second: {fileID: 2100000, guid: 468df963c8b96304b8d4a83075379904, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
