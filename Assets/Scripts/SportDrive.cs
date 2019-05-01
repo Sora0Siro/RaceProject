@@ -30,7 +30,7 @@ public class SportDrive : MonoBehaviour
     float some = 10;
     float formulaAngle;
 
-    Transmission back = new Transmission(0.0f, -40.0f, 700);//300
+    Transmission back = new Transmission(0.0f, -80.0f, 1700);//300
     Transmission first = new Transmission(0.0f, 500, 1000);//400
     Transmission second = new Transmission(500, 900, 500);//500
     Transmission third = new Transmission(900, 1200, 350);//550
@@ -41,6 +41,10 @@ public class SportDrive : MonoBehaviour
 
     public Light[] FrontLights;
     public Light[] RearLights;
+
+    public GameObject menu;
+
+    bool canMove = true;
 
     float b;
     float carVelocity;
@@ -53,51 +57,55 @@ public class SportDrive : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            onOffFrontLights();
+            GamePause();
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (canMove)
         {
-            torqueBrake(stopTorque);
-            onBrakeLights();
+            carVelocity = carBody.velocity.magnitude;
+            velocityIn3 = carBody.velocity;
+
+            accel = Input.GetAxis("Vertical") * mass[curentTransmission].torquePower;
+            Transmission();
+            Steer();
+
+            VertAxis = Input.GetAxis("Vertical");
+            StartForce = RL.motorTorque;
+            StopForce = FL.brakeTorque;
+            currTransm = curentTransmission;
+            WheelsRPM = RR.rpm;
+
+
+            Vector3 v = new Vector3(formulaAngle + FR.transform.rotation.x, mSteerAngle, 0);
+
+            FR.transform.localRotation = Quaternion.Euler(v);
+            FL.transform.localRotation = Quaternion.Euler(v);
+
+            //FR.transform.localRotation = Quaternion.Euler(0, mSteerAngle, 0);
+            //FL.transform.localRotation = Quaternion.Euler(0, mSteerAngle, 0);
+
+            //FR.transform.Rotate(Vector3.right, formulaAngle);
+            //FL.transform.Rotate(Vector3.right, formulaAngle);
+
+            RR.transform.Rotate(Vector3.right, formulaAngle);
+            RL.transform.Rotate(Vector3.right, formulaAngle);
+            
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                onOffFrontLights();
+            }
+            if (Input.GetKey(KeyCode.Space))
+            {
+                Debug.Log("Braking");
+                torqueBrake(stopTorque);
+                onBrakeLights();
+            }
+            else if (Input.GetKeyUp(KeyCode.Space))
+            {
+                offBrakeLights();
+            }
         }
-        else if (Input.GetKeyUp(KeyCode.Space))
-        {
-            offBrakeLights();
-        }
-
-
-
-        carVelocity = carBody.velocity.magnitude;
-        velocityIn3 = carBody.velocity;
-
-        accel = Input.GetAxis("Vertical") * mass[curentTransmission].torquePower;
-        Transmission();
-        Steer();
-
-        VertAxis = Input.GetAxis("Vertical");
-        StartForce = RL.motorTorque;
-        StopForce = FL.brakeTorque;
-        currTransm = curentTransmission;
-        WheelsRPM = RR.rpm;
-
-
-        Vector3 v = new Vector3(formulaAngle + FR.transform.rotation.x, mSteerAngle, 0);
-
-        FR.transform.localRotation = Quaternion.Euler(v);
-        FL.transform.localRotation = Quaternion.Euler(v);
-
-        //FR.transform.localRotation = Quaternion.Euler(0, mSteerAngle, 0);
-        //FL.transform.localRotation = Quaternion.Euler(0, mSteerAngle, 0);
-
-        //FR.transform.Rotate(Vector3.right, formulaAngle);
-        //FL.transform.Rotate(Vector3.right, formulaAngle);
-
-
-
-        RR.transform.Rotate(Vector3.right, formulaAngle);
-        RL.transform.Rotate(Vector3.right, formulaAngle);
     }
 
     //Transmission
@@ -160,8 +168,6 @@ public class SportDrive : MonoBehaviour
             ReleaseTorque();
             ReleaseBrakes();
         }
-
-
         formulaAngle = RL.rpm * some / 60;
     }
     void checkTransmission()
@@ -197,6 +203,12 @@ public class SportDrive : MonoBehaviour
     void Slowing(float force /*very sensitive*/)
     {
         carBody.velocity = Vector3.MoveTowards(carBody.velocity, new Vector3(0, 0, 0), force);
+    }
+
+    void GamePause()
+    {
+        canMove = !canMove;
+        menu.SetActive(!menu.active);
     }
 
     //physics values
