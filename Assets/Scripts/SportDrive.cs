@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SportDrive : MonoBehaviour, Pausable
+public class SportDrive : MonoBehaviour
 {
     public float brakeForce = 0f;
     public float StopForce = 0f;
@@ -49,8 +48,6 @@ public class SportDrive : MonoBehaviour, Pausable
 
     float b;
     float carVelocity;
-    Vector3 savedVelocity;
-    float savedRPM;
     float mSteerAngle;
     void Start()
     {
@@ -108,9 +105,6 @@ public class SportDrive : MonoBehaviour, Pausable
             {
                 offBrakeLights();
             }
-        }else
-        {
-            Debug.Log("I CANT NONVE");
         }
     }
 
@@ -215,14 +209,6 @@ public class SportDrive : MonoBehaviour, Pausable
     {
         canMove = !canMove;
         menu.SetActive(!menu.active);
-        if (menu.active)
-        {
-            Pause();
-        }
-        else
-        {
-            UnPause();
-        }
     }
 
     //physics values
@@ -263,31 +249,5 @@ public class SportDrive : MonoBehaviour, Pausable
         //    FrontLights[i].gameObject.SetActive(lightstate);
         //}
         lightstate = !lightstate;
-    }
-
-    public void Pause()
-    {
-        savedVelocity = carBody.velocity;
-
-        savedRPM = WheelsRPM;
-        WheelsRPM = 0;
-
-        RR.motorTorque = WheelsRPM;
-        RL.motorTorque = WheelsRPM;
-        FR.motorTorque = WheelsRPM;
-        FL.motorTorque = WheelsRPM;
-
-        carBody.velocity = new Vector3(0,0,0);
-    }
-
-    public void UnPause()
-    {
-        carBody.velocity = savedVelocity;
-        WheelsRPM = savedRPM;
-
-        RR.motorTorque = WheelsRPM;
-        RL.motorTorque = WheelsRPM;
-        FR.motorTorque = WheelsRPM;
-        FL.motorTorque = WheelsRPM;
     }
 }
