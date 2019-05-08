@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -7,14 +7,17 @@ using UnityEngine;
 
 public class BuildRoad : EditorWindow
 {
+    public GameObject starterPrefab;
+    public GameObject prefab;
+    public GameObject GameController;
+    private RacesManager RM;
     private bool addPoints;
     private bool addRace;
     private bool empty = true;
     private string checkPointsNumber, raceType, prizePool;
     private string[,] checkPoints;
     private string[] coordsNames = new string[] { "X", "Y", "Z" };
-    StreamReader stream;
-    StreamWriter write;
+    private GameObject[] raceRoute;
     [MenuItem("Window/Race Editor")]
 
     public static void ShowWindow()
@@ -59,22 +62,29 @@ public class BuildRoad : EditorWindow
         }
         if (addRace)
         {
-            string s = Application.dataPath + "/Races Database.txt";
-            addToDatabase(s);
+            addToDatabase();
             this.Close();
         }
     }
-    void addToDatabase(string path)
+    void addToDatabase()
     {
         int n = Convert.ToInt32(checkPointsNumber);
-        File.AppendAllText(path, checkPointsNumber + " " + raceType + " " + prizePool + '\n');
+        GameController = GameObject.Find("GameController");
+        RM = GameController.GetComponent<RacesManager>();
+        raceRoute = new GameObject[n];
         for (int i = 0; i < n; i++)
         {
+            float[] pointCoords = new float[3];
             for (int j = 0; j < 3; j++)
             {
-                File.AppendAllText(path, checkPoints[i, j] + " ");
+                float.TryParse(checkPoints[i, j], out pointCoords[j]);
             }
-            File.AppendAllText(path, "\n");
+            if (i == 0)
+            {
+                RM.raceStarter.Add(Instantiate(starterPrefab, new Vector3(pointCoords[0], pointCoords[1], pointCoords[2]), Quaternion.identity));
+            }
+            raceRoute[i] = Instantiate(prefab, new Vector3(pointCoords[0], pointCoords[1], pointCoords[2]), Quaternion.Euler(0, 0, 90));
         }
+        RM.AllRaces.Add(new Race(raceRoute, raceType, Convert.ToInt32(prizePool)));
     }
-}*/
+}

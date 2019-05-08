@@ -5,7 +5,7 @@ using UnityEngine;
 public class RespawnCar : MonoBehaviour
 {
     public GameObject car;
-    public SportDrive drive;
+
     public SpawnPoint spawn;
     public RoadSpawnPoint roadSpawn;
     private Transform carTransform;
@@ -40,6 +40,7 @@ public class RespawnCar : MonoBehaviour
         if (respawnActive)
         {
             Timer += Time.deltaTime;
+            Debug.Log(Timer);
         }
         if (Timer >= 1.0)
         {
@@ -57,8 +58,6 @@ public class RespawnCar : MonoBehaviour
         carTransform.rotation = defaultQuaternion;
         carTransform.position = spawnPosition;
         carRigidbody.constraints = RigidbodyConstraints.FreezeRotationZ;
-        //drive.speed = drive.startingTorquePower;
         respawnActive = true;
-        drive.torqueBrake(1000000);
     }
 }

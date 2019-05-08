@@ -41,7 +41,7 @@ public class RoadSpawnPoint : MonoBehaviour
         {
             if (roadHit.collider.tag == "Road")
             {
-                Debug.Log("Road Found!  ");
+                //Debug.Log("Road Found!  ");
                 roadSpawnPoint = transform.position;
                 roadSpawnQuaternion = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
             }

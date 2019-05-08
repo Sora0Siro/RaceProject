@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    bool active = true;
+    private bool active = true;
 
     public void setActive(bool active)
     {
@@ -17,7 +17,7 @@ public class CheckPoint : MonoBehaviour
     void Start()
     {
         active = false;
-        gameObject.SetActive(active);
+        gameObject.SetActive(false);
     }
     void Update()
     {

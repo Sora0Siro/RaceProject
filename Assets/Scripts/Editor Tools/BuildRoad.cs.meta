@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: b55f806f67d95734ab272102a18446e9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_PersistentViewDataDictionary: {instanceID: 0}
+  - starterPrefab: {fileID: 4573233829022221609, guid: 9fc981d2c6c43e44ba6f85934392d310,
+      type: 3}
+  - prefab: {fileID: 1152947467026528964, guid: e1883acd32fa54f49a662157a9157e88,
+      type: 3}
+  - GameController: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -4,215 +4,106 @@ using UnityEngine;
 
 public class SportDrive : MonoBehaviour
 {
-    public float brakeForce = 0f;
-    public float StopForce = 0f;
-    public float StartForce = 0f;
-    public float VertAxis = 0f;
-    public int currTransm = 0;
-    public Vector3 velocityIn3;
-    public float WheelsRPM = 0;
-
-    Rigidbody carBody;
     public WheelCollider FR;
     public WheelCollider FL;
     public WheelCollider RR;
     public WheelCollider RL;
 
-    int maxTransmission = 5;
-    float accel;
-    float steerLimitAngle = 35f;
-    float slowing = 2500f;
-    float stopTorque = 5000f;
+    public int maxTransmission = 5;
+    private float v;
+    public float slowing = 1000.0f;
+    public float steer = 25.0f;
+    public float stopTorque = 5000.0f;
     private int curentTransmission = 1;
-
-    bool lightstate = true;
-
-    float some = 10;
-    float formulaAngle;
-
-    Transmission back = new Transmission(0.0f, -80.0f, 1700);//300
-    Transmission first = new Transmission(0.0f, 500, 1000);//400
-    Transmission second = new Transmission(500, 900, 500);//500
-    Transmission third = new Transmission(900, 1200, 350);//550
-    Transmission fourth = new Transmission(1200, 1600, 300);//600
-    Transmission fifth = new Transmission(1600, 1800, 250);//650
-    Transmission sixth = new Transmission(1800, 2000, 200);//700
+    Transmission back = new Transmission(0.0f, -100.0f, 300.0f);
+    Transmission first = new Transmission(0.0f, 40.0f, 400.0f);
+    Transmission second = new Transmission(40.0f, 80.0f, 500.0f);
+    Transmission third = new Transmission(80.0f, 100.0f, 550.0f);
+    Transmission fourth = new Transmission(100.0f, 150.0f, 600.0f);
+    Transmission fifth = new Transmission(150.0f, 200.0f, 650.0f);
+    Transmission sixth = new Transmission(200.0f, 260.0f, 700.0f);
     Transmission[] mass;
 
-    public Light[] FrontLights;
-    public Light[] RearLights;
-
-    public GameObject menu;
-
-    bool canMove = true;
-
-    float b;
-    float carVelocity;
-    float mSteerAngle;
     void Start()
     {
         mass = new Transmission[] {back, first, second, third, fourth, fifth, sixth };
-        carBody = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            GamePause();
-        }
-        if (canMove)
-        {
-            carVelocity = carBody.velocity.magnitude;
-            velocityIn3 = carBody.velocity;
-
-            accel = Input.GetAxis("Vertical") * mass[curentTransmission].torquePower;
-            Transmission();
-            Steer();
-
-            VertAxis = Input.GetAxis("Vertical");
-            StartForce = RL.motorTorque;
-            StopForce = FL.brakeTorque;
-            currTransm = curentTransmission;
-            WheelsRPM = RR.rpm;
-
-
-            Vector3 v = new Vector3(formulaAngle + FR.transform.rotation.x, mSteerAngle, 0);
-
-            FR.transform.localRotation = Quaternion.Euler(v);
-            FL.transform.localRotation = Quaternion.Euler(v);
-
-            //FR.transform.localRotation = Quaternion.Euler(0, mSteerAngle, 0);
-            //FL.transform.localRotation = Quaternion.Euler(0, mSteerAngle, 0);
-
-            //FR.transform.Rotate(Vector3.right, formulaAngle);
-            //FL.transform.Rotate(Vector3.right, formulaAngle);
-
-            RR.transform.Rotate(Vector3.right, formulaAngle);
-            RL.transform.Rotate(Vector3.right, formulaAngle);
-            
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                onOffFrontLights();
-            }
-            if (Input.GetKey(KeyCode.Space))
-            {
-                Debug.Log("Braking");
-                torqueBrake(stopTorque);
-                onBrakeLights();
-            }
-            else if (Input.GetKeyUp(KeyCode.Space))
-            {
-                offBrakeLights();
-            }
-        }
+        v = Input.GetAxis("Vertical") * mass[curentTransmission].torquePower;
+        checkTransmission();
+        Transmission();
+        slowingDown();
+        Steer();
+        Stop();
+        //Debug.Log(curentTransmission);
     }
-
-    //Transmission
     void Transmission()
     {
-        checkTransmission();
-
-        if (accel > 0)
+        //Debug.Log("This is v: " + v);
+        if (v > 0)
         {
-            offBrakeLights();
-            /*if(RR.rpm < 0)
+            torqueBrake(0);
+            if ((RR.rpm < mass[curentTransmission].maxRPM || RL.rpm < mass[curentTransmission].maxRPM))
             {
-                //Slowing(0.1f);
+                torqueStart(v);
             }
-            else
-            {*/
-                ReleaseBrakes();
-                if ((RR.rpm < mass[curentTransmission].maxRPM || RL.rpm < mass[curentTransmission].maxRPM))
-                {
-                    torqueStart(accel);
-                }
-                else if (RR.rpm >= mass[curentTransmission].maxRPM || RL.rpm >= mass[curentTransmission].maxRPM)
-                {
-                    if (curentTransmission < maxTransmission)
-                    {
-                        curentTransmission++;
-                    }
-                    else
-                    {
-                        torqueStart(0);
-                    }
-                }
-            //}
-        }
-        else if (accel < 0)
-        {
-            onBrakeLights();
-            /*if(RR.rpm > 0)
+            else if (RR.rpm >= mass[curentTransmission].maxRPM || RL.rpm >= mass[curentTransmission].maxRPM)
             {
-                Slowing(0.1f);
-            }
-            else
-            {*/
-                ReleaseBrakes();
-                if ((RR.rpm > mass[0].maxRPM || RL.rpm > mass[0].maxRPM))
+                if (curentTransmission < maxTransmission)
                 {
-                    torqueStart(accel);
+                    curentTransmission++;
                 }
-                else if (RR.rpm <= mass[curentTransmission].maxRPM || RL.rpm <= mass[curentTransmission].maxRPM)
+                else
                 {
                     torqueStart(0);
                 }
-
-            //}
+            }
         }
-        else if(accel == 0)
+        else if (v < 0)
         {
-            offBrakeLights();
-            Slowing(0.05f /*very sensitive*/);
-            ReleaseTorque();
-            ReleaseBrakes();
+            torqueBrake(0);
+            if ((RR.rpm > mass[0].maxRPM || RL.rpm > mass[0].maxRPM))
+            {
+                torqueStart(v);
+            }
+            else if (RR.rpm <= mass[curentTransmission].maxRPM || RL.rpm <= mass[curentTransmission].maxRPM)
+            {
+                torqueStart(0);
+            }
         }
-        formulaAngle = RL.rpm * some / 60;
+       // Debug.Log(RR.rpm);
     }
     void checkTransmission()
     {
-        if(RR.rpm < mass[curentTransmission].minRPM && curentTransmission > 1)
+        float curentRPM = RR.rpm;
+        if(curentRPM < mass[curentTransmission].minRPM && curentTransmission > 1)
         {
             curentTransmission--;
         }
     }
-
-    //Actions
+    void Stop()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            torqueBrake(stopTorque);
+        }
+    }
     void Steer()
     {
-        mSteerAngle = Input.GetAxis("Horizontal") * steerLimitAngle;
-        FR.steerAngle = mSteerAngle;
-        FL.steerAngle = mSteerAngle;
+        float h = Input.GetAxis("Horizontal") * steer;
+        FR.steerAngle = h;
+        FL.steerAngle = h;
     }
-    void ReleaseBrakes()
+    void slowingDown()
     {
-        if(RR.brakeTorque != 0 && FR.brakeTorque != 0)
+        if(v==0)
         {
-            torqueBrake(0);
-            offBrakeLights();
+            torqueBrake(slowing);
         }
     }
-    void ReleaseTorque()
-    {
-        if(RR.motorTorque != 0)
-        {
-            torqueStart(0);
-        }
-    }
-    void Slowing(float force /*very sensitive*/)
-    {
-        carBody.velocity = Vector3.MoveTowards(carBody.velocity, new Vector3(0, 0, 0), force);
-    }
-
-    void GamePause()
-    {
-        canMove = !canMove;
-        menu.SetActive(!menu.active);
-    }
-
-    //physics values
-    public void torqueBrake(float brakePower)
+    void torqueBrake(float brakePower)
     {
         RR.brakeTorque = brakePower;
         RL.brakeTorque = brakePower;
@@ -223,31 +114,5 @@ public class SportDrive : MonoBehaviour
     {
         RR.motorTorque = movePower;
         RL.motorTorque = movePower;
-    }
-    void onBrakeLights()
-    {
-        for (int i = 0; i < RearLights.Length; i++)
-        {
-            RearLights[i].gameObject.SetActive(true);
-        }
-    }
-    void offBrakeLights()
-    {
-        for (int i = 0; i < RearLights.Length; i++)
-        {
-            RearLights[i].gameObject.SetActive(false);
-        }
-    }
-
-    void onOffFrontLights()
-    {
-        FrontLights[0].gameObject.SetActive(lightstate);
-        FrontLights[1].gameObject.SetActive(lightstate);
-
-        //for (int i = 0; i < FrontLights.Length; i++)
-        //{
-        //    FrontLights[i].gameObject.SetActive(lightstate);
-        //}
-        lightstate = !lightstate;
     }
 }

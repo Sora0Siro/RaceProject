@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class RaceStarter : MonoBehaviour
 {
+    public List<GameObject> raceMembers = new List<GameObject>();
     private bool enterTheRace = false;
     private bool showDetails = false;
     public bool getEnter()
@@ -24,7 +26,6 @@ public class RaceStarter : MonoBehaviour
     }
     void OnTriggerEnter(Collider col)
     {
-        Debug.Log(col.tag);
         if(col.tag == "Player")
         {
             showDetails = true;
@@ -46,6 +47,45 @@ public class RaceStarter : MonoBehaviour
         if (col.tag == "Player")
         {
             showDetails = false;
+        }
+    }
+
+    public void SpawnCars()
+    {
+        float x, y, z;
+        x = gameObject.transform.position.x;
+        y = gameObject.transform.position.y;
+        z = gameObject.transform.position.z;
+        for (int i = 0; i < raceMembers.Count; i++)
+        {
+            if (i != raceMembers.Count - 1)
+            {
+                if ((i + 1) % 2 == 0)
+                {
+                    x = gameObject.transform.position.x + 2.5f;
+                    Instantiate(raceMembers[i], new Vector3(x, y, z), Quaternion.identity);
+                    z = gameObject.transform.position.z - (8 * ((i+1)/2));
+                }
+                else
+                {
+                    x = gameObject.transform.position.x - 2.5f;
+                    Instantiate(raceMembers[i], new Vector3(x, y, z), Quaternion.identity);
+                }
+            }
+            else
+            {
+                if ((i + 1) % 2 == 0)
+                {
+                    x = gameObject.transform.position.x + 2.5f;
+                    raceMembers[i].transform.position = new Vector3(x, y, z);
+                    z = gameObject.transform.position.z - (5 * ((i+1)/2));
+                }
+                else
+                {
+                    x = gameObject.transform.position.x - 2.5f;
+                    raceMembers[i].transform.position = new Vector3(x, y, z);
+                }
+            }
         }
     }
 }
