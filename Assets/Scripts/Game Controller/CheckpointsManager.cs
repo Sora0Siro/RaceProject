@@ -7,7 +7,6 @@ public class CheckpointsManager
     private GameObject[] Race;
     private string raceType;
     private int prizePool;
-    private int curentPoint = 0;
 
     public GameObject[] getRace()
     {

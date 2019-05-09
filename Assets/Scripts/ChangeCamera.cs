@@ -4,21 +4,36 @@ using UnityEngine;
 
 public class ChangeCamera : MonoBehaviour
 {
-    public int lenght = 4;
-    public GameObject[] cameras = new GameObject[4];
-    private int choosedCamera = 0;
+    public GameObject[] camerasObj;
+    private int previousCamNumber = 0;
+    private int lastcam = 0;
+    Camera[] cameras;
+    int choosedCamera = 0;
     void Start()
     {
-        
+        cameras = new Camera[camerasObj.Length];
+        for (int i = 0; i < camerasObj.Length; i++)
+        {
+            cameras[i] = camerasObj[i].GetComponent<Camera>();
+        }
+        lastcam = cameras.Length - 1;
     }
-
-    
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Tab) && !Input.GetKey(KeyCode.LeftShift))
+        ChangeView();
+        LookBack();
+    }
+    void SetActiveCamera(bool flag, int number)
+    {
+        camerasObj[number].SetActive(flag);
+        cameras[number].enabled = (flag);
+    }
+    void ChangeView()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
         {
-            disableEnableCamera(false, choosedCamera);
-            if (choosedCamera == lenght-1)
+            SetActiveCamera(false, choosedCamera);
+            if (choosedCamera == lastcam)
             {
                 choosedCamera = 0;
             }
@@ -26,20 +41,40 @@ public class ChangeCamera : MonoBehaviour
             {
                 choosedCamera++;
             }
-            disableEnableCamera(true, choosedCamera);
+            SetActiveCamera(true, choosedCamera);
         }
-        if(Input.GetKey(KeyCode.LeftShift))
+    }
+    void LookBack()
+    {
+        if (Input.GetKey(KeyCode.B))
         {
-            disableEnableCamera(false, choosedCamera);
-            disableEnableCamera(true, 3);
+            if(choosedCamera != lastcam)
+            {
+                Debug.Log("KEY DOWN");
+
+                previousCamNumber = choosedCamera;
+                Debug.Log("previous cam:" + previousCamNumber);
+
+                SetActiveCamera(false, choosedCamera);
+
+                choosedCamera = lastcam;
+                Debug.Log("next cam :" + choosedCamera);
+
+                SetActiveCamera(true, choosedCamera); // last camera should looking backwards
+            }
+        }
+        else if(Input.GetKeyUp(KeyCode.B))
+        {
+            Debug.Log("KEY UP");
+            Debug.Log("What camera to off:" + choosedCamera);
+            SetActiveCamera(false, choosedCamera);
+            choosedCamera = previousCamNumber;
+            Debug.Log("What camera to on:" + choosedCamera);
+            SetActiveCamera(true, choosedCamera);
         }
         else
         {
-            disableEnableCamera(true, choosedCamera);
+            SetActiveCamera(true, choosedCamera);
         }
-    }
-    public void disableEnableCamera(bool flag, int number)
-    {
-        cameras[number].GetComponent<Camera>().enabled = flag;
     }
 }
