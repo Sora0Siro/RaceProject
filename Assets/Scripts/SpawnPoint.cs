@@ -28,7 +28,7 @@ public class SpawnPoint : MonoBehaviour
             timer = 0;
             spawnPosition = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
             spawnQuaternion = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
-            Debug.Log("Respawn updated");
+            //Debug.Log("Respawn updated");
         }
     }
 }

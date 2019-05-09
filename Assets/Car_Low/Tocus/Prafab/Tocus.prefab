@@ -1934,6 +1934,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff82b3f7d97f884bbb4d85d1dc6e0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FR: {fileID: 1977516303058093}
+  FL: {fileID: 3292915571958616121}
+  RR: {fileID: 6655036742197868101}
+  RL: {fileID: 190102073186835297}
+  maxTransmission: 5
+  slowing: 200
+  steer: 25
+  stopTorque: 2000
   brakeForce: 0
   StopForce: 0
   StartForce: 0
@@ -1941,10 +1949,6 @@ MonoBehaviour:
   currTransm: 0
   velocityIn3: {x: 0, y: 0, z: 0}
   WheelsRPM: 0
-  FR: {fileID: 1977516303058093}
-  FL: {fileID: 3292915571958616121}
-  RR: {fileID: 6655036742197868101}
-  RL: {fileID: 190102073186835297}
   FrontLights:
   - {fileID: 3580071069771233323}
   - {fileID: 9005658197210712403}
