@@ -26,14 +26,15 @@ public class RaceStarter : MonoBehaviour
     }
     void OnTriggerEnter(Collider col)
     {
-        if(col.tag == "Player")
+        if (col.tag == "Player")
         {
             showDetails = true;
         }
     }
     void OnTriggerStay(Collider col)
     {
-        if(col.tag == "Player")
+        DecreaseRadius();
+        if (col.tag == "Player")
         {
             if(Input.GetKeyUp(KeyCode.E))
             {
@@ -44,6 +45,7 @@ public class RaceStarter : MonoBehaviour
     }
     void OnTriggerExit(Collider col)
     {
+        ChangeSphereRadius(2.4f);
         if (col.tag == "Player")
         {
             showDetails = false;
@@ -87,5 +89,22 @@ public class RaceStarter : MonoBehaviour
                 }
             }
         }
+    }
+
+    void ChangeSphereRadius(float radius)
+    {
+        this.gameObject.GetComponent<SphereCollider>().radius = radius;
+    }
+
+    void IncreaseRadius()
+    {
+        if (this.gameObject.GetComponent<SphereCollider>().radius < 2.4f)
+        {
+            this.gameObject.GetComponent<SphereCollider>().radius += 0.01f;
+        }
+    }
+    void DecreaseRadius()
+    {
+        this.gameObject.GetComponent<SphereCollider>().radius -= 0.01f;
     }
 }
