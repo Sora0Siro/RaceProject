@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SportDrive : MonoBehaviour
 {
@@ -9,11 +10,16 @@ public class SportDrive : MonoBehaviour
     public WheelCollider RR;
     public WheelCollider RL;
 
+    public Text carSpeed;
+    private float m_carSpeed;
+
+    public Vector3 centerOfMass;
+
     public int maxTransmission = 5;
     private float v;
-    public float slowing = 1000.0f;
-    public float steer = 25.0f;
-    public float stopTorque = 5000.0f;
+    public float slowing = 0;
+    public float steer = 0;
+    public float stopTorque = 0;
     private int curentTransmission = 1;
 
     Transmission back = new Transmission(0.0f, -80.0f, 1700);//300
@@ -43,8 +49,6 @@ public class SportDrive : MonoBehaviour
     float some = 10;
     float formulaAngle;
 
-    
-
     public Light[] FrontLights;
     public Light[] RearLights;
 
@@ -71,11 +75,14 @@ public class SportDrive : MonoBehaviour
             Lights();
             Stop();
         }
+        m_carSpeed = 2 * Mathf.PI * FR.radius * FR.rpm * 60 / 1000;
+        carSpeed.text = "" + m_carSpeed;
     }
     void Start()
     {
         mass = new Transmission[] { back, first, second, third, fourth, fifth, sixth };
         carBody = GetComponent<Rigidbody>();
+        GetComponent<Rigidbody>().centerOfMass = centerOfMass;
     }
 
     //Transmission    
@@ -190,8 +197,8 @@ public class SportDrive : MonoBehaviour
     {
         RR.brakeTorque = brakePower;
         RL.brakeTorque = brakePower;
-        FR.brakeTorque = brakePower;
-        FL.brakeTorque = brakePower;
+        //FR.brakeTorque = brakePower;
+        //FL.brakeTorque = brakePower;
     }
     void torqueStart(float movePower)
     {
