@@ -10,10 +10,10 @@ public class SportDrive : MonoBehaviour
     public WheelCollider RL;
 
     public int maxTransmission = 5;
-    private float v;
     public float slowing = 1000.0f;
     public float steer = 25.0f;
     public float stopTorque = 5000.0f;
+    private float v;
     private int curentTransmission = 1;
     Transmission back = new Transmission(0.0f, -100.0f, 300.0f);
     Transmission first = new Transmission(0.0f, 40.0f, 400.0f);

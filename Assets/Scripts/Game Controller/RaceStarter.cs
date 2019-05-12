@@ -6,6 +6,7 @@ using UnityEngine;
 public class RaceStarter : MonoBehaviour
 {
     public List<GameObject> raceMembers = new List<GameObject>();
+    public Quaternion directionQuaternion;
     private bool enterTheRace = false;
     private bool showDetails = false;
     public bool getEnter()
@@ -26,16 +27,16 @@ public class RaceStarter : MonoBehaviour
     }
     void OnTriggerEnter(Collider col)
     {
-        if(col.tag == "Player")
+        if (col.tag == "Player")
         {
             showDetails = true;
         }
     }
     void OnTriggerStay(Collider col)
     {
-        if(col.tag == "Player")
+        if (col.tag == "Player")
         {
-            if(Input.GetKeyUp(KeyCode.E))
+            if (Input.GetKeyUp(KeyCode.E))
             {
                 showDetails = false;
                 enterTheRace = true;
@@ -54,37 +55,25 @@ public class RaceStarter : MonoBehaviour
     {
         float x, y, z;
         x = gameObject.transform.position.x;
-        y = gameObject.transform.position.y;
+        y = gameObject.transform.position.y+5.0f;
         z = gameObject.transform.position.z;
         for (int i = 0; i < raceMembers.Count; i++)
         {
-            if (i != raceMembers.Count - 1)
+            raceMembers[i].transform.rotation =  gameObject.transform.rotation;
+            if ((i + 1) % 2 == 0)
             {
-                if ((i + 1) % 2 == 0)
-                {
-                    x = gameObject.transform.position.x + 2.5f;
-                    Instantiate(raceMembers[i], new Vector3(x, y, z), Quaternion.identity);
-                    z = gameObject.transform.position.z - (8 * ((i+1)/2));
-                }
-                else
-                {
-                    x = gameObject.transform.position.x - 2.5f;
-                    Instantiate(raceMembers[i], new Vector3(x, y, z), Quaternion.identity);
-                }
+                x = gameObject.transform.position.x + 2.5f;
+                raceMembers[i].transform.position = new Vector3(x, y, z);
+                z = gameObject.transform.position.z - (8 * ((i + 1) / 2));
             }
             else
             {
-                if ((i + 1) % 2 == 0)
-                {
-                    x = gameObject.transform.position.x + 2.5f;
-                    raceMembers[i].transform.position = new Vector3(x, y, z);
-                    z = gameObject.transform.position.z - (5 * ((i+1)/2));
-                }
-                else
-                {
-                    x = gameObject.transform.position.x - 2.5f;
-                    raceMembers[i].transform.position = new Vector3(x, y, z);
-                }
+                x = gameObject.transform.position.x + (-2.5f);
+                raceMembers[i].transform.position = new Vector3(x, y, z);
+            }
+            if(i<raceMembers.Count-1)
+            {
+                raceMembers[i].GetComponent<BotsPathFinding>().inRace = true;
             }
         }
     }

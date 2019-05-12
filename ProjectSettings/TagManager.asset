@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Race AI
+  - Terrain
+  - Player Point
+  - Road
   layers:
   - Default
   - TransparentFX

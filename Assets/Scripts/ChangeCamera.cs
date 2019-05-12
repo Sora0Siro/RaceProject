@@ -13,7 +13,7 @@ public class ChangeCamera : MonoBehaviour
     }
 
     
-    void Update()
+    /*void Update()
     {
         if(Input.GetKeyUp(KeyCode.Tab) && !Input.GetKey(KeyCode.LeftShift))
         {
@@ -41,5 +41,5 @@ public class ChangeCamera : MonoBehaviour
     public void disableEnableCamera(bool flag, int number)
     {
         cameras[number].GetComponent<Camera>().enabled = flag;
-    }
+    }*/
 }
