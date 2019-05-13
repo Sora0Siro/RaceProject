@@ -1,0 +1,185 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Landscape
+  m_Shader: {fileID: 4800000, guid: 0cfde8295764afb4bb13ea4a5fe3eb5f, type: 3}
+  m_ShaderKeywords: _SWITCH_ROCK_ON
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Foam_mov:
+        m_Texture: {fileID: 2800000, guid: f9ebc5e862082b24bbed19b6407f8937, type: 3}
+        m_Scale: {x: 300, y: 300}
+        m_Offset: {x: 0, y: 0}
+    - _Grass:
+        m_Texture: {fileID: 2800000, guid: d5a431f18247df34c938eb3657662708, type: 3}
+        m_Scale: {x: 20, y: 20}
+        m_Offset: {x: 0, y: 0}
+    - _Grass_Albedo:
+        m_Texture: {fileID: 2800000, guid: d5a431f18247df34c938eb3657662708, type: 3}
+        m_Scale: {x: 100, y: 100}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask_Blend:
+        m_Texture: {fileID: 2800000, guid: e5933eb720288f34292d56d087cc02ae, type: 3}
+        m_Scale: {x: 100, y: 100}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal_Global:
+        m_Texture: {fileID: 2800000, guid: eae9278d88e8f804bba2285abd50d24f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Rock:
+        m_Texture: {fileID: 2800000, guid: 4a8d07ffd1206594dac864b109c51b34, type: 3}
+        m_Scale: {x: 20, y: 20}
+        m_Offset: {x: 0, y: 0}
+    - _Rock_Albedo:
+        m_Texture: {fileID: 2800000, guid: 4a8d07ffd1206594dac864b109c51b34, type: 3}
+        m_Scale: {x: 20, y: 20}
+        m_Offset: {x: 0, y: 0}
+    - _Sand:
+        m_Texture: {fileID: 2800000, guid: 2686d13453b4b4e4abd3415612790aee, type: 3}
+        m_Scale: {x: 20, y: 20}
+        m_Offset: {x: 0, y: 0}
+    - _Sand_Albedo:
+        m_Texture: {fileID: 2800000, guid: 2686d13453b4b4e4abd3415612790aee, type: 3}
+        m_Scale: {x: 30, y: 30}
+        m_Offset: {x: 0, y: 0}
+    - _foam:
+        m_Texture: {fileID: 2800000, guid: 36dd0b22da8874ed38075789055ca664, type: 3}
+        m_Scale: {x: 70, y: 70}
+        m_Offset: {x: 0, y: 0}
+    - _mask_blend:
+        m_Texture: {fileID: 2800000, guid: 28c7aad1372ff114b90d330f8a2dd938, type: 3}
+        m_Scale: {x: 200, y: 200}
+        m_Offset: {x: 0, y: 0}
+    - _rock:
+        m_Texture: {fileID: 2800000, guid: c582fc6c1a2041c41be70a8ced199a7a, type: 3}
+        m_Scale: {x: 0.1, y: 0.1}
+        m_Offset: {x: 0, y: 0}
+    - _rough:
+        m_Texture: {fileID: 2800000, guid: 28c7aad1372ff114b90d330f8a2dd938, type: 3}
+        m_Scale: {x: 20, y: 20}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Angle: 0.17
+    - _AngleRock: 0.8
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _Fallof_Grass: 10
+    - _Fallof_Sand_Wet: 1
+    - _FoamBorder_hardness: 0.01
+    - _Foam_Border_Fallof: 0.02
+    - _Foam_Width: 3
+    - _Foam_hardness: 0
+    - _Foam_speed: 1
+    - _Foam_speed_copy: 0
+    - _Foam_speed_x1: 0.0002
+    - _Foam_speed_y: 0.00025
+    - _Foam_speed_z: -0.0003
+    - _Glossiness: 0.5
+    - _H_Fallof_Foam: 2
+    - _H_Fallof_Foam_copy: 0.02
+    - _H_Fallof_Wet: 0
+    - _H_Fallof_Wet_copy: 0.1
+    - _H_Fallof_Wet_fond: 0.5
+    - _Hardness: 20.66
+    - _Height: 20.42
+    - _HeightFallof: 1.3
+    - _Height_Fallof: 1
+    - _Height_Grass: 100
+    - _Height_foam: 18.7
+    - _Height_wet: 1
+    - _Height_wet_copy: 18.7
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _Roughness: 0.5
+    - _Roughness_Grass: 0.906
+    - _Roughness_Rock: 0.906
+    - _Roughness_Sand: 0.797
+    - _Roughness_sand_wet: 0.371
+    - _Spec: 0
+    - _Specular: 0.5
+    - _SrcBlend: 1
+    - _Switch_rock: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    - _delay_time: 2
+    - _foam_speed_x2: -0.00034
+    - _grass_distance: 300
+    - _grass_distance_Fallof: 100
+    - _mask_hardness: 15.23
+    - _off: 0
+    - _on: 0
+    - _on_off: 0
+    - _on_off_copy: 1
+    - _spec_grass: 0.137
+    - _spec_rock: 0.153
+    - _spec_sand: 0.081
+    - _spec_sand_wet: 0.016
+    m_Colors:
+    - _1: {r: 0.5147059, g: 0.44355538, b: 0.40495244, a: 1}
+    - _2: {r: 0.41113082, g: 0.75, b: 0.30330884, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FoamSpeed_x1_y1_x2_y2: {r: 0.0003, g: 0.00035, b: -0.0003, a: -0.00035}
+    - _Foam_witdh_max: {r: -1, g: 1, b: 20.04, a: 19}
+    - _Rock_color: {r: 0.7058823, g: 0.6079333, b: 0.5605536, a: 1}
+    - _Sand: {r: 0.8235294, g: 0.78861713, b: 0.59342563, a: 1}
+    - _Sand_color: {r: 0.9632353, g: 0.94682324, b: 0.81450045, a: 1}
+    - _Sand_wet: {r: 0.8014706, g: 0.76131576, b: 0.7248594, a: 1}
+    - _color_1: {r: 0.6326731, g: 0.83823526, b: 0.35748267, a: 1}
+    - _color_2: {r: 0.8235294, g: 0.65531594, b: 0.5025951, a: 1}
+    - _color_Grass: {r: 0.44380146, g: 0.63235295, b: 0.3533737, a: 1}
+    - _color_Rock: {r: 0.46323532, g: 0.27930364, b: 0.27930364, a: 1}
+    - _node_3344: {r: 0.5, g: 0.5, b: 0.5, a: 1}

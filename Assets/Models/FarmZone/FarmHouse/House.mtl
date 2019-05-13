@@ -1,0 +1,28 @@
+# Blender MTL File: 'a.blend'
+# Material Count: 2
+
+newmtl FrontColor:001.000
+Ns 100.000000
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\3d jadi-jadian\Farmhouse\house\rumah\Rumah3dc_Albedo.tga
+map_Bump D:\\3d jadi-jadian\\Farmhouse\\house\\rumah\\Rumah3dc_Normal.tga
+map_Ks D:\\3d jadi-jadian\\Farmhouse\\house\\rumah\\Rumah3dc_Gloss.tga
+
+newmtl FrontColor:001.001
+Ns 100.000000
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\3d jadi-jadian\Farmhouse\house\atap\ATAP3DC_Albedo.tga
+map_Bump D:\\3d jadi-jadian\\Farmhouse\\house\\atap\\ATAP3DC_Normal.tga
+map_Ks D:\\3d jadi-jadian\\Farmhouse\\house\\atap\\ATAP3DC_Gloss.tga
