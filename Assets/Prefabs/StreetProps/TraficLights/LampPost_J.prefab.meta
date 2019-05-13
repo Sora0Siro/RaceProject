@@ -1,12 +1,11 @@
 fileFormatVersion: 2
-guid: 52685ed25fdcb1b488b7047664232501
+guid: cd5e71e7cc94bfd44b94d4e12223092d
 labels:
 - lamp
 - light
 - trafic
-NativeFormatImporter:
+PrefabImporter:
   externalObjects: {}
-  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
