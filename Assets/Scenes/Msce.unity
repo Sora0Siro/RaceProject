@@ -20319,8 +20319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189a90b6b5fd4544baf3a6029fb86948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lenght: 4
-  cameras:
+  camerasObj:
   - {fileID: 607331635}
   - {fileID: 1850760094}
   - {fileID: 809729248}
@@ -32529,19 +32528,19 @@ PrefabInstance:
       objectReference: {fileID: 30789627}
     - target: {fileID: 1792714847, guid: 02e641040fb499c49a848e40f535164a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.003873886
+      value: -0.0038738938
       objectReference: {fileID: 0}
     - target: {fileID: 1792714847, guid: 02e641040fb499c49a848e40f535164a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.01904413
+      value: 0.019044176
       objectReference: {fileID: 0}
     - target: {fileID: 1792714847, guid: 02e641040fb499c49a848e40f535164a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.19936436
+      value: 0.1993644
       objectReference: {fileID: 0}
     - target: {fileID: 1792714847, guid: 02e641040fb499c49a848e40f535164a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9797327
+      value: 0.97973275
       objectReference: {fileID: 0}
     - target: {fileID: 1792714847, guid: 02e641040fb499c49a848e40f535164a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32557,19 +32556,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 978516901, guid: 02e641040fb499c49a848e40f535164a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.003873886
+      value: -0.0038738938
       objectReference: {fileID: 0}
     - target: {fileID: 978516901, guid: 02e641040fb499c49a848e40f535164a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.01904413
+      value: 0.019044176
       objectReference: {fileID: 0}
     - target: {fileID: 978516901, guid: 02e641040fb499c49a848e40f535164a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.19936436
+      value: 0.1993644
       objectReference: {fileID: 0}
     - target: {fileID: 978516901, guid: 02e641040fb499c49a848e40f535164a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9797327
+      value: 0.97973275
       objectReference: {fileID: 0}
     - target: {fileID: 978516901, guid: 02e641040fb499c49a848e40f535164a, type: 3}
       propertyPath: m_LocalPosition.x
