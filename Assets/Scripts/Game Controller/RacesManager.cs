@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class Race
 {
     public GameObject[] raceRoute;
+    public GameObject[] AIRaceRoute;
     public string raceType;
     public int prizePool;
 
@@ -41,12 +42,25 @@ public class Race
         }
     }
 }
+class membersRacePos
+{
+    public GameObject raceMember;
+    public float finishDistance;
+
+    public membersRacePos(GameObject raceMember, float finishDistance)
+    {
+        this.raceMember = raceMember;
+        this.finishDistance = finishDistance;
+    }
+}
 
 public class RacesManager : MonoBehaviour
 {
-    private StreamReader read;
+    //private StreamReader read;
     public List<Race> AllRaces = new List<Race>();
     public List<GameObject> raceStarter = new List<GameObject>();
+    private List<membersRacePos> raceMembers = new List<membersRacePos>();
+    private GameObject[] curentBotRace;
     private GameObject[] curentRace;
     private int curentPoint;
     private int curentRaceStarter;
@@ -66,6 +80,10 @@ public class RacesManager : MonoBehaviour
     {
         this.AllRaces = AllRaces;
     }
+    public GameObject[] getBotsPath()
+    {
+        return curentBotRace;
+    }
     void Start()
     {
         curentPoint = 0;
@@ -81,6 +99,7 @@ public class RacesManager : MonoBehaviour
         else
         {
             routeUpdate();
+            checkPosition();
         }
     }
 
@@ -117,6 +136,11 @@ public class RacesManager : MonoBehaviour
     /*Функция отвечающая за активацию конкретной гонки.*/
     public void enterTheRace(int n)
     {
+        for (int i = 0; i < raceStarter[n].GetComponent<RaceStarter>().raceMembers.Count; i++)
+        {
+            raceMembers.Add(new membersRacePos(raceStarter[n].GetComponent<RaceStarter>().raceMembers[i],100.0f));
+        }
+        curentBotRace = AllRaces[n].AIRaceRoute;
         curentRace = AllRaces[n].getRace();
         curentRace[0].GetComponent<CheckPoint>().gameObject.SetActive(true);
         curentRace[0].GetComponent<CheckPoint>().setActive(true);
@@ -153,6 +177,32 @@ public class RacesManager : MonoBehaviour
             if (i != curentRaceStarter)
             {
                 raceStarter[i].SetActive(activate);
+            }
+        }
+    }
+
+    public void checkPosition()
+    {
+        for (int i = 0; i < raceMembers.Count; i++)
+        {
+            float distance = Vector3.Distance(raceMembers[i].raceMember.transform.position, curentRace[curentRace.Length - 1].transform.position);
+            raceMembers[i].finishDistance = distance;
+        }
+        SortAndShow();
+    }
+
+    public void SortAndShow()
+    {
+        raceMembers.Sort(delegate (membersRacePos mem1, membersRacePos mem2)
+        {
+            return mem1.finishDistance.CompareTo(mem2.finishDistance);
+        });
+
+        for(int i=0;i<raceMembers.Count;i++)
+        {
+            if(raceMembers[i].raceMember.tag =="Player")
+            {
+                Debug.Log(i+1);
             }
         }
     }
