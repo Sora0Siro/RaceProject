@@ -1,92 +1,36 @@
 fileFormatVersion: 2
 guid: 6efa051d1469dde46a3f4c03a7d40dae
 ModelImporter:
-  serializedVersion: 25
-  internalIDToNameTable:
-  - first:
-      1: 100000
-    second: //RootNode
-  - first:
-      1: 100002
-    second: Cylinder045
-  - first:
-      1: 100004
-    second: Cylinder050
-  - first:
-      1: 100006
-    second: Cylinder051
-  - first:
-      1: 100008
-    second: Cylinder052
-  - first:
-      1: 100010
-    second: Object011
-  - first:
-      4: 400000
-    second: //RootNode
-  - first:
-      4: 400002
-    second: Cylinder045
-  - first:
-      4: 400004
-    second: Cylinder050
-  - first:
-      4: 400006
-    second: Cylinder051
-  - first:
-      4: 400008
-    second: Cylinder052
-  - first:
-      4: 400010
-    second: Object011
-  - first:
-      23: 2300000
-    second: Cylinder045
-  - first:
-      23: 2300002
-    second: Cylinder050
-  - first:
-      23: 2300004
-    second: Cylinder051
-  - first:
-      23: 2300006
-    second: Cylinder052
-  - first:
-      23: 2300008
-    second: Object011
-  - first:
-      33: 3300000
-    second: Cylinder045
-  - first:
-      33: 3300002
-    second: Cylinder050
-  - first:
-      33: 3300004
-    second: Cylinder051
-  - first:
-      33: 3300006
-    second: Cylinder052
-  - first:
-      33: 3300008
-    second: Object011
-  - first:
-      43: 4300000
-    second: Object011
-  - first:
-      43: 4300002
-    second: Cylinder051
-  - first:
-      43: 4300004
-    second: Cylinder045
-  - first:
-      43: 4300006
-    second: Cylinder052
-  - first:
-      43: 4300008
-    second: Cylinder050
-  - first:
-      95: 9500000
-    second: //RootNode
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Cylinder045
+    100004: Cylinder050
+    100006: Cylinder051
+    100008: Cylinder052
+    100010: Object011
+    400000: //RootNode
+    400002: Cylinder045
+    400004: Cylinder050
+    400006: Cylinder051
+    400008: Cylinder052
+    400010: Object011
+    2300000: Cylinder045
+    2300002: Cylinder050
+    2300004: Cylinder051
+    2300006: Cylinder052
+    2300008: Object011
+    3300000: Cylinder045
+    3300002: Cylinder050
+    3300004: Cylinder051
+    3300006: Cylinder052
+    3300008: Object011
+    4300000: Object011
+    4300002: Cylinder051
+    4300004: Cylinder045
+    4300006: Cylinder052
+    4300008: Cylinder050
+    9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -134,19 +78,18 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
+    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    skinWeightsMode: 0
-    maxBonesPerVertex: 4
-    minBoneWeight: 0.001
-    meshOptimizationFlags: -1
     indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -155,11 +98,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
-    serializedVersion: 3
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -169,7 +111,6 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

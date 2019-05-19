@@ -1,203 +1,73 @@
 fileFormatVersion: 2
 guid: 743b5a36add64654a83f60be2beee9f1
 ModelImporter:
-  serializedVersion: 25
-  internalIDToNameTable:
-  - first:
-      1: 100000
-    second: Bridge_Damage
-  - first:
-      1: 100002
-    second: Bridge_Damage_A
-  - first:
-      1: 100004
-    second: Bridge_Damage_B
-  - first:
-      1: 100006
-    second: Bridge_Double_Curved
-  - first:
-      1: 100008
-    second: Bridge_Double_Straight
-  - first:
-      1: 100010
-    second: Bridge_Simple_Curved
-  - first:
-      1: 100012
-    second: Bridge_Simple_Straight
-  - first:
-      1: 100014
-    second: Bridge_ToStreet_Double
-  - first:
-      1: 100016
-    second: Bridge_ToStreet_Simple
-  - first:
-      1: 100018
-    second: //RootNode
-  - first:
-      1: 100020
-    second: BridgeSlope_Double
-  - first:
-      1: 100022
-    second: BridgeSlope_Simple
-  - first:
-      1: 100024
-    second: Bridge_Double_Straight_A
-  - first:
-      1: 100026
-    second: Bridge_Simple_Straight_A
-  - first:
-      4: 400000
-    second: Bridge_Damage
-  - first:
-      4: 400002
-    second: Bridge_Damage_A
-  - first:
-      4: 400004
-    second: Bridge_Damage_B
-  - first:
-      4: 400006
-    second: Bridge_Double_Curved
-  - first:
-      4: 400008
-    second: Bridge_Double_Straight
-  - first:
-      4: 400010
-    second: Bridge_Simple_Curved
-  - first:
-      4: 400012
-    second: Bridge_Simple_Straight
-  - first:
-      4: 400014
-    second: Bridge_ToStreet_Double
-  - first:
-      4: 400016
-    second: Bridge_ToStreet_Simple
-  - first:
-      4: 400018
-    second: //RootNode
-  - first:
-      4: 400020
-    second: BridgeSlope_Double
-  - first:
-      4: 400022
-    second: BridgeSlope_Simple
-  - first:
-      4: 400024
-    second: Bridge_Double_Straight_A
-  - first:
-      4: 400026
-    second: Bridge_Simple_Straight_A
-  - first:
-      23: 2300000
-    second: Bridge_Damage_A
-  - first:
-      23: 2300002
-    second: Bridge_Damage_B
-  - first:
-      23: 2300004
-    second: Bridge_Double_Curved
-  - first:
-      23: 2300006
-    second: Bridge_Double_Straight
-  - first:
-      23: 2300008
-    second: Bridge_Simple_Curved
-  - first:
-      23: 2300010
-    second: Bridge_Simple_Straight
-  - first:
-      23: 2300012
-    second: Bridge_ToStreet_Double
-  - first:
-      23: 2300014
-    second: Bridge_ToStreet_Simple
-  - first:
-      23: 2300016
-    second: BridgeSlope_Double
-  - first:
-      23: 2300018
-    second: BridgeSlope_Simple
-  - first:
-      23: 2300020
-    second: Bridge_Double_Straight_A
-  - first:
-      23: 2300022
-    second: Bridge_Simple_Straight_A
-  - first:
-      33: 3300000
-    second: Bridge_Damage_A
-  - first:
-      33: 3300002
-    second: Bridge_Damage_B
-  - first:
-      33: 3300004
-    second: Bridge_Double_Curved
-  - first:
-      33: 3300006
-    second: Bridge_Double_Straight
-  - first:
-      33: 3300008
-    second: Bridge_Simple_Curved
-  - first:
-      33: 3300010
-    second: Bridge_Simple_Straight
-  - first:
-      33: 3300012
-    second: Bridge_ToStreet_Double
-  - first:
-      33: 3300014
-    second: Bridge_ToStreet_Simple
-  - first:
-      33: 3300016
-    second: BridgeSlope_Double
-  - first:
-      33: 3300018
-    second: BridgeSlope_Simple
-  - first:
-      33: 3300020
-    second: Bridge_Double_Straight_A
-  - first:
-      33: 3300022
-    second: Bridge_Simple_Straight_A
-  - first:
-      43: 4300000
-    second: Bridge_Simple_Straight
-  - first:
-      43: 4300002
-    second: BridgeSlope_Simple
-  - first:
-      43: 4300004
-    second: BridgeSlope_Double
-  - first:
-      43: 4300006
-    second: Bridge_Double_Straight
-  - first:
-      43: 4300008
-    second: Bridge_Double_Curved
-  - first:
-      43: 4300010
-    second: Bridge_Simple_Curved
-  - first:
-      43: 4300012
-    second: Bridge_ToStreet_Simple
-  - first:
-      43: 4300014
-    second: Bridge_ToStreet_Double
-  - first:
-      43: 4300016
-    second: Bridge_Damage_A
-  - first:
-      43: 4300018
-    second: Bridge_Damage_B
-  - first:
-      43: 4300020
-    second: Bridge_Double_Straight_A
-  - first:
-      43: 4300022
-    second: Bridge_Simple_Straight_A
-  - first:
-      95: 9500000
-    second: //RootNode
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Bridge_Damage
+    100002: Bridge_Damage_A
+    100004: Bridge_Damage_B
+    100006: Bridge_Double_Curved
+    100008: Bridge_Double_Straight
+    100010: Bridge_Double_Straight_A
+    100012: Bridge_Simple_Curved
+    100014: Bridge_Simple_Straight
+    100016: Bridge_Simple_Straight_A
+    100018: Bridge_ToStreet_Double
+    100020: Bridge_ToStreet_Simple
+    100022: //RootNode
+    100024: BridgeSlope_Double
+    100026: BridgeSlope_Simple
+    400000: Bridge_Damage
+    400002: Bridge_Damage_A
+    400004: Bridge_Damage_B
+    400006: Bridge_Double_Curved
+    400008: Bridge_Double_Straight
+    400010: Bridge_Double_Straight_A
+    400012: Bridge_Simple_Curved
+    400014: Bridge_Simple_Straight
+    400016: Bridge_Simple_Straight_A
+    400018: Bridge_ToStreet_Double
+    400020: Bridge_ToStreet_Simple
+    400022: //RootNode
+    400024: BridgeSlope_Double
+    400026: BridgeSlope_Simple
+    2300000: Bridge_Damage_A
+    2300002: Bridge_Damage_B
+    2300004: Bridge_Double_Curved
+    2300006: Bridge_Double_Straight
+    2300008: Bridge_Double_Straight_A
+    2300010: Bridge_Simple_Curved
+    2300012: Bridge_Simple_Straight
+    2300014: Bridge_Simple_Straight_A
+    2300016: Bridge_ToStreet_Double
+    2300018: Bridge_ToStreet_Simple
+    2300020: BridgeSlope_Double
+    2300022: BridgeSlope_Simple
+    3300000: Bridge_Damage_A
+    3300002: Bridge_Damage_B
+    3300004: Bridge_Double_Curved
+    3300006: Bridge_Double_Straight
+    3300008: Bridge_Double_Straight_A
+    3300010: Bridge_Simple_Curved
+    3300012: Bridge_Simple_Straight
+    3300014: Bridge_Simple_Straight_A
+    3300016: Bridge_ToStreet_Double
+    3300018: Bridge_ToStreet_Simple
+    3300020: BridgeSlope_Double
+    3300022: BridgeSlope_Simple
+    4300000: Bridge_Simple_Straight
+    4300002: BridgeSlope_Simple
+    4300004: BridgeSlope_Double
+    4300006: Bridge_Double_Straight
+    4300008: Bridge_Double_Curved
+    4300010: Bridge_Simple_Curved
+    4300012: Bridge_ToStreet_Simple
+    4300014: Bridge_Damage_A
+    4300016: Bridge_Damage_B
+    4300018: Bridge_ToStreet_Double
+    4300020: Bridge_Double_Straight_A
+    4300022: Bridge_Simple_Straight_A
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 0
@@ -240,19 +110,18 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 1
     useFileUnits: 1
+    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    skinWeightsMode: 0
-    maxBonesPerVertex: 4
-    minBoneWeight: 0.001
-    meshOptimizationFlags: 1
     indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 0
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -261,11 +130,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
-    serializedVersion: 3
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -275,7 +143,6 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.01
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
