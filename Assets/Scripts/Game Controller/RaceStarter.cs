@@ -57,6 +57,7 @@ public class RaceStarter : MonoBehaviour
         x = gameObject.transform.position.x;
         y = gameObject.transform.position.y+5.0f;
         z = gameObject.transform.position.z;
+        raceMembers[raceMembers.Count - 1] = GameObject.FindGameObjectWithTag("Player");
         for (int i = 0; i < raceMembers.Count; i++)
         {
             raceMembers[i].transform.rotation =  gameObject.transform.rotation;

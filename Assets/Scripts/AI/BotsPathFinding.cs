@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BotsPathFinding : MonoBehaviour
 {
+    public Vector3 garagePlace;
     public GameObject gameController;
     public float maxSteer = 45.0f;
     public WheelCollider FR;
@@ -48,6 +49,7 @@ public class BotsPathFinding : MonoBehaviour
     void Start()
     {
         mass = new Transmission[] { back, first, second, third, fourth, fifth, sixth };
+        garagePlace = gameObject.transform.position;
     }
 
     void FixedUpdate()
@@ -55,6 +57,10 @@ public class BotsPathFinding : MonoBehaviour
         if (path == null)
         {
             path = gameController.GetComponent<RacesManager>().getBotsPath();
+            if (path != null)
+            {
+                Debug.Log(path.Length + "  " + gameObject.name);
+            }
         }
         if (inRace && path != null)
         {
@@ -222,6 +228,15 @@ public class BotsPathFinding : MonoBehaviour
     {
         FL.steerAngle = Mathf.Lerp(FL.steerAngle, targetSteerAngle, Time.deltaTime * steerSpeed);
         FR.steerAngle = Mathf.Lerp(FR.steerAngle, targetSteerAngle, Time.deltaTime * steerSpeed);
+    }
+
+    public void ReturnToTheGarage()
+    {
+        gameObject.transform.position = garagePlace;
+        inRace = false;
+        path = null;
+        gameObject.SetActive(false);
+        gameObject.SetActive(true);
     }
 
 }

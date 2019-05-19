@@ -59,18 +59,19 @@ public class RacesManager : MonoBehaviour
     //private StreamReader read;
     public List<Race> AllRaces = new List<Race>();
     public List<GameObject> raceStarter = new List<GameObject>();
-    private List<membersRacePos> raceMembers = new List<membersRacePos>();
-    private GameObject[] curentBotRace;
-    private GameObject[] curentRace;
-    private int curentPoint;
-    private int curentRaceStarter;
-    private bool raceStarts;
     public int numberOfActiveRaces;
     public GameObject pointPrefab;
     public GameObject raceStartPrefab;
     public GameObject UIDetails;
     public Text raceType;
     public Text prizePool;
+
+    private List<membersRacePos> raceMembers = new List<membersRacePos>();
+    private GameObject[] curentBotRace;
+    private GameObject[] curentRace;
+    private int curentPoint;
+    private int curentRaceStarter;
+    private bool raceStarts;
 
     public List<Race> getRaces()
     {
@@ -98,8 +99,8 @@ public class RacesManager : MonoBehaviour
         }
         else
         {
-            routeUpdate();
             checkPosition();
+            routeUpdate();
         }
     }
 
@@ -166,6 +167,7 @@ public class RacesManager : MonoBehaviour
             {
                 raceStarts = false;
                 activatorOfRaces(true);
+                ReturnCars();
             }
         }
     }
@@ -180,7 +182,7 @@ public class RacesManager : MonoBehaviour
             }
         }
     }
-
+    /*Определение дистанции каждого участника гонки до финиша*/
     public void checkPosition()
     {
         for (int i = 0; i < raceMembers.Count; i++)
@@ -190,7 +192,7 @@ public class RacesManager : MonoBehaviour
         }
         SortAndShow();
     }
-
+    /* Сортировка участников гонки по дистанции до финиша и определение позиции игрока*/
     public void SortAndShow()
     {
         raceMembers.Sort(delegate (membersRacePos mem1, membersRacePos mem2)
@@ -205,5 +207,26 @@ public class RacesManager : MonoBehaviour
                 Debug.Log(i+1);
             }
         }
+    }
+
+    /* Ресет всех данных по завершению гонки*/
+    public void ReturnCars()
+    {
+        for(int i=0;i<raceMembers.Count;i++)
+        {
+            if (raceMembers[i].raceMember.tag != "Player")
+            {
+                raceMembers[i].raceMember.GetComponent<BotsPathFinding>().ReturnToTheGarage();
+            }
+            else
+            {
+                int money = AllRaces[curentRaceStarter].prizePool / (i+1);
+                gameObject.GetComponent<PlayerStats>().SetMoney(money);
+            }
+        }
+        raceMembers = new List<membersRacePos>();
+        curentBotRace = null;
+        curentRace = null;
+        curentPoint = 0;
     }
 }
