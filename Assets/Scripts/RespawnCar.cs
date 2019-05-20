@@ -5,6 +5,7 @@ using UnityEngine;
 public class RespawnCar : MonoBehaviour
 {
     public GameObject car;
+    public PlayerStats PS;
 
     public SpawnPoint spawn;
     public RoadSpawnPoint roadSpawn;
@@ -16,21 +17,22 @@ public class RespawnCar : MonoBehaviour
     private float Timer;
     void Start()
     {
+        PS = GetComponent<PlayerStats>();
         carTransform = car.transform;
         carRigidbody = car.GetComponent<Rigidbody>();
+        LoadSpawns();
     }
 
-    
+
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.R) && Timer == 0.0f)
+        if (Input.GetKeyUp(KeyCode.R) && Timer == 0.0f)
         {
             Respawn(spawn.spawnPosition, spawn.spawnQuaternion);
         }
         if ((Input.GetKeyUp(KeyCode.R) && Input.GetKey(KeyCode.LeftControl)) && Timer == 0.0f)
         {
             Respawn(roadSpawn.roadSpawnPoint, roadSpawn.roadSpawnQuaternion);
-            //Debug.Log(roadSpawn.roadSpawnPoint + "  " + roadSpawn.roadSpawnQuaternion);
         }
         RespawnTimer();
     }
@@ -59,5 +61,14 @@ public class RespawnCar : MonoBehaviour
         carTransform.position = spawnPosition;
         carRigidbody.constraints = RigidbodyConstraints.FreezeRotationZ;
         respawnActive = true;
+    }
+
+    public void LoadSpawns()
+    {
+        car = PS.playerCar;
+        spawn = car.GetComponent<SpawnPoint>();
+        roadSpawn = car.GetComponent<RoadSpawnPoint>();
+        carTransform = car.transform;
+        carRigidbody = car.GetComponent<Rigidbody>();
     }
 }

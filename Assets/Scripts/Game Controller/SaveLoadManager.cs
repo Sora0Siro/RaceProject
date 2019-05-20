@@ -8,11 +8,17 @@ public class SaveLoadManager : MonoBehaviour
 {
     string filePath;
     RacesManager RM;
+    PlayerStats PS;
+    ChangeCamera CC;
+    RespawnCar RC;
     List<Race> races = new List<Race>();
     private void Start()
     {
         filePath = Application.persistentDataPath + "/save.gamesave";
         RM = GetComponent<RacesManager>();
+        PS = GetComponent<PlayerStats>();
+        CC = GetComponent<ChangeCamera>();
+        RC = GetComponent<RespawnCar>();
         races = RM.getRaces();
     }
     public void SaveGame()
@@ -22,7 +28,9 @@ public class SaveLoadManager : MonoBehaviour
 
         Save save = new Save();
         save.numberOfActiveRaces = RM.numberOfActiveRaces;
-        save.SaveCheckPoints(races);
+        save.playerCar = PS.carName;
+        save.playerPos = new Save.Vec3(PS.playerPos.x, PS.playerPos.y, PS.playerPos.z);
+        save.playerMoney = PS.playerMoney;
 
         bf.Serialize(fs, save);
         fs.Close();
@@ -41,13 +49,11 @@ public class SaveLoadManager : MonoBehaviour
         save = (Save)bf.Deserialize(fs);
         fs.Close();
 
-        int i = 0;
-        RM.numberOfActiveRaces = save.numberOfActiveRaces;
-        foreach(var race in save.RaceData)
-        {
-            races[i].LoadRaces(race);
-            i++;
-        }
+        PS.carName = save.playerCar;
+        PS.playerPos = new Vector3(save.playerPos.x, save.playerPos.y, save.playerPos.z);
+        PS.LoadData(save.playerMoney, save.playerCar);
+        CC.LoadCameras();
+        RC.LoadSpawns();
     }
 }
 
@@ -55,6 +61,9 @@ public class SaveLoadManager : MonoBehaviour
 public class Save
 {
     public int numberOfActiveRaces;
+    public string playerCar;
+    public int playerMoney;
+    public Vec3 playerPos;
 
     [System.Serializable]
     public struct Vec3
@@ -75,21 +84,6 @@ public class Save
         public RaceCoords(List<Vec3> checkPointsVectors)
         {
             this.checkPointsVectors = checkPointsVectors;
-        }
-    }
-    public List<RaceCoords> RaceData = new List<RaceCoords>();
-
-    public void SaveCheckPoints(List<Race> races)
-    {
-        foreach(var r in races)
-        {
-            GameObject[] concretRace = r.getRace();
-            List<Vec3> checkPoints = new List<Vec3>();
-            for(int i=0;i<concretRace.Length;i++)
-            {
-                checkPoints.Add(new Vec3(concretRace[i].transform.position.x, concretRace[i].transform.position.y, concretRace[i].transform.position.z));
-            }
-            RaceData.Add(new RaceCoords(checkPoints));
         }
     }
 }

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Race
 {
+    
     public GameObject[] raceRoute;
     public GameObject[] AIRaceRoute;
     public string raceType;
@@ -31,18 +32,8 @@ public class Race
         this.raceType = raceType;
         this.prizePool = prizePool;
     }
-
-    public void LoadRaces(Save.RaceCoords save)
-    {
-        int i = 0;
-        foreach (var v in save.checkPointsVectors)
-        {
-            raceRoute[i].transform.position = new Vector3(v.x, v.y, v.z);
-            i++;
-        }
-    }
 }
-class membersRacePos
+public class membersRacePos
 {
     public GameObject raceMember;
     public float finishDistance;
@@ -63,10 +54,14 @@ public class RacesManager : MonoBehaviour
     public GameObject pointPrefab;
     public GameObject raceStartPrefab;
     public GameObject UIDetails;
+    public GameObject UIResults;
     public Text raceType;
     public Text prizePool;
+    public Text resultTable;
+    public float timer;
 
-    private List<membersRacePos> raceMembers = new List<membersRacePos>();
+    public List<membersRacePos> raceMembers = new List<membersRacePos>();
+    private Vector3 curentFinishPoint;
     private GameObject[] curentBotRace;
     private GameObject[] curentRace;
     private int curentPoint;
@@ -99,8 +94,17 @@ public class RacesManager : MonoBehaviour
         }
         else
         {
+            timer = 0.0f;
             checkPosition();
             routeUpdate();
+        }
+        if(UIResults.activeSelf)
+        {
+            timer += Time.deltaTime;
+            if (timer >= 3.0f)
+            {
+                UIResults.SetActive(false);
+            }
         }
     }
 
@@ -132,7 +136,7 @@ public class RacesManager : MonoBehaviour
         int prizeCalculation = AllRaces[n].getMoney();
         UIDetails.SetActive(true);
         raceType.text = "Race Type: " + AllRaces[n].getType();
-        prizePool.text = Convert.ToString("Prize Pool\n 1st: " + prizeCalculation + "$\n 2nd: " + (prizeCalculation / 2) + "$\n 3rd: " + (prizeCalculation / 4) + "$");
+        prizePool.text = Convert.ToString("Prize Pool\n 1st: " + prizeCalculation + "$\n 2nd: " + (prizeCalculation / 2) + "$\n 3rd: " + (prizeCalculation / 3) + "$");
     }
     /*Функция отвечающая за активацию конкретной гонки.*/
     public void enterTheRace(int n)
@@ -148,6 +152,7 @@ public class RacesManager : MonoBehaviour
         raceStarter[n].GetComponent<RaceStarter>().setEnter(false);
         raceStarter[n].SetActive(false);
         curentRaceStarter = n;
+        curentFinishPoint = curentRace[curentRace.Length - 1].transform.position;
         raceStarts = true;
     }
     /*Функция отвечающая за активацию чекпоинтов для игрока и регистрацию окончания гонки. 
@@ -187,7 +192,14 @@ public class RacesManager : MonoBehaviour
     {
         for (int i = 0; i < raceMembers.Count; i++)
         {
-            float distance = Vector3.Distance(raceMembers[i].raceMember.transform.position, curentRace[curentRace.Length - 1].transform.position);
+            if (raceMembers[i].raceMember.tag != "Player")
+            {
+                if (raceMembers[i].raceMember.GetComponent<BotsPathFinding>().winner)
+                {
+                    curentFinishPoint = raceMembers[i].raceMember.transform.position;
+                }
+            }
+            float distance = Vector3.Distance(raceMembers[i].raceMember.transform.position, curentFinishPoint);
             raceMembers[i].finishDistance = distance;
         }
         SortAndShow();
@@ -204,7 +216,7 @@ public class RacesManager : MonoBehaviour
         {
             if(raceMembers[i].raceMember.tag =="Player")
             {
-                Debug.Log(i+1);
+                //Debug.Log(i+1);
             }
         }
     }
@@ -212,18 +224,23 @@ public class RacesManager : MonoBehaviour
     /* Ресет всех данных по завершению гонки*/
     public void ReturnCars()
     {
-        for(int i=0;i<raceMembers.Count;i++)
+        float height = 0.0f;
+        for (int i=0;i<raceMembers.Count;i++)
         {
+            int money = AllRaces[curentRaceStarter].prizePool / (i + 1);
+            resultTable.text += Convert.ToString((i + 1) + "\t" + raceMembers[i].raceMember.name + "  " + money + "\n");
+            height += 60.0f;
+            resultTable.rectTransform.sizeDelta = new Vector2(resultTable.rectTransform.sizeDelta.x, height);
             if (raceMembers[i].raceMember.tag != "Player")
             {
                 raceMembers[i].raceMember.GetComponent<BotsPathFinding>().ReturnToTheGarage();
             }
             else
             {
-                int money = AllRaces[curentRaceStarter].prizePool / (i+1);
                 gameObject.GetComponent<PlayerStats>().SetMoney(money);
             }
         }
+        UIResults.SetActive(true);
         raceMembers = new List<membersRacePos>();
         curentBotRace = null;
         curentRace = null;

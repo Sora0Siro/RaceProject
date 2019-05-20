@@ -7,6 +7,7 @@ public class RaceStarter : MonoBehaviour
 {
     public List<GameObject> raceMembers = new List<GameObject>();
     public Quaternion directionQuaternion;
+    public GameObject gameController;
     private bool enterTheRace = false;
     private bool showDetails = false;
     public bool getEnter()
@@ -57,7 +58,7 @@ public class RaceStarter : MonoBehaviour
         x = gameObject.transform.position.x;
         y = gameObject.transform.position.y+5.0f;
         z = gameObject.transform.position.z;
-        raceMembers[raceMembers.Count - 1] = GameObject.FindGameObjectWithTag("Player");
+        raceMembers[raceMembers.Count - 1] = gameController.GetComponent<PlayerStats>().playerCar;
         for (int i = 0; i < raceMembers.Count; i++)
         {
             raceMembers[i].transform.rotation =  gameObject.transform.rotation;

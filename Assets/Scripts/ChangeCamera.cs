@@ -5,12 +5,14 @@ using UnityEngine;
 public class ChangeCamera : MonoBehaviour
 {
     public GameObject[] camerasObj;
+    PlayerStats PS;
     private int previousCamNumber = 0;
     private int lastcam = 0;
     Camera[] cameras;
     int choosedCamera = 0;
     void Start()
     {
+        PS = GetComponent<PlayerStats>();
         cameras = new Camera[camerasObj.Length];
         for (int i = 0; i < camerasObj.Length; i++)
         {
@@ -68,6 +70,23 @@ public class ChangeCamera : MonoBehaviour
         else
         {
             SetActiveCamera(true, choosedCamera);
+        }
+    }
+    public void LoadCameras()
+    {
+        List<GameObject> childCameras = new List<GameObject>();
+        GameObject camerasRoot;
+        camerasRoot = PS.playerCar.transform.Find("Cameras").gameObject;
+        foreach(Transform child in camerasRoot.transform)
+        {
+            childCameras.Add(child.gameObject);
+        }
+        int i = 0;
+        foreach(GameObject camera in childCameras)
+        {
+            camerasObj[i] = camera;
+            cameras[i] = camera.GetComponent<Camera>();
+            i++;
         }
     }
 }

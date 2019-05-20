@@ -17,6 +17,9 @@ public class BotsPathFinding : MonoBehaviour
     public float steer = 25.0f;
     public float stopTorque = 5000.0f;
     public bool inRace = false;
+    private float finishStopTorque = 3000.0f;
+    public Vector3 centerOfMass;
+    public bool winner = false;
 
     public float sensorLength = 3.0f;
     public Vector3 frontSensorPosition = new Vector3(0, 0.5f, 2.0f);
@@ -29,14 +32,8 @@ public class BotsPathFinding : MonoBehaviour
     private int curentTransmission = 1;
     private bool avoiding = false;
     private float avoidingMultiplier = 0.0f;
-    Transmission back = new Transmission(0.0f, -100.0f, 300.0f);
-    Transmission first = new Transmission(0.0f, 40.0f, 400.0f);
-    Transmission second = new Transmission(40.0f, 80.0f, 500.0f);
-    Transmission third = new Transmission(80.0f, 100.0f, 550.0f);
-    Transmission fourth = new Transmission(100.0f, 150.0f, 600.0f);
-    Transmission fifth = new Transmission(150.0f, 200.0f, 650.0f);
-    Transmission sixth = new Transmission(200.0f, 260.0f, 700.0f);
-    Transmission[] mass;
+
+    public Transmission[] mass;
 
     public void setCurrentPoint(int currentPoint)
     {
@@ -48,8 +45,9 @@ public class BotsPathFinding : MonoBehaviour
     }
     void Start()
     {
-        mass = new Transmission[] { back, first, second, third, fourth, fifth, sixth };
         garagePlace = gameObject.transform.position;
+        centerOfMass = new Vector3(0.12f, -0.168f, -0.13f);
+        GetComponent<Rigidbody>().centerOfMass = centerOfMass;
     }
 
     void FixedUpdate()
@@ -57,10 +55,6 @@ public class BotsPathFinding : MonoBehaviour
         if (path == null)
         {
             path = gameController.GetComponent<RacesManager>().getBotsPath();
-            if (path != null)
-            {
-                Debug.Log(path.Length + "  " + gameObject.name);
-            }
         }
         if (inRace && path != null)
         {
@@ -75,7 +69,23 @@ public class BotsPathFinding : MonoBehaviour
             }
             else if (currentPoint >= path.Length)
             {
-                torqueBrake(stopTorque);
+                float finishStopTorque = 600.0f;
+                for (int i = 0; i < gameController.GetComponent<RacesManager>().raceMembers.Count; i++)
+                {
+                    if(gameController.GetComponent<RacesManager>().raceMembers[i].raceMember.name == gameObject.name)
+                    {
+                        if (i == 0)
+                        {
+                            winner = true;
+                            finishStopTorque *= (i + 1);
+                        }
+                        else
+                        {
+                            finishStopTorque *= ((i + 1) * 0.5f);
+                        }
+                    }
+                }
+                torqueBrake(finishStopTorque);
                 inRace = false;
             }
         }
@@ -102,6 +112,7 @@ public class BotsPathFinding : MonoBehaviour
         {
             if (curentTransmission < maxTransmission)
             {
+               // Debug.Log(curentTransmission + "   " + gameObject.name);
                 curentTransmission++;
             }
             else
@@ -136,7 +147,7 @@ public class BotsPathFinding : MonoBehaviour
 
     public void CheckDistance()
     {
-        if (Vector3.Distance(gameObject.transform.position, path[currentPoint].transform.position) < 3.0f)
+        if (Vector3.Distance(gameObject.transform.position, path[currentPoint].transform.position) < 5.0f)
         {
             currentPoint++;
         }
@@ -235,6 +246,7 @@ public class BotsPathFinding : MonoBehaviour
         gameObject.transform.position = garagePlace;
         inRace = false;
         path = null;
+        winner = false;
         gameObject.SetActive(false);
         gameObject.SetActive(true);
     }

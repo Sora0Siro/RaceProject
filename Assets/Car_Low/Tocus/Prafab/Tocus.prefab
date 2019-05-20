@@ -107,8 +107,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978516899}
-  m_LocalRotation: {x: 0.19999489, y: 0.019944115, z: -0.0040719113, w: 0.97958547}
-  m_LocalPosition: {x: -0.19105303, y: 2, z: -4.689998}
+  m_LocalRotation: {x: 0.19999486, y: 0.019944174, z: -0.0040718582, w: 0.9795855}
+  m_LocalPosition: {x: -0.19105422, y: 2, z: -4.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1503039450}
@@ -179,7 +179,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009228562}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 0, z: -0.085}
+  m_LocalPosition: {x: -0.01, y: -0.168, z: -0.085}
   m_LocalScale: {x: 0.11, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 4013073016293618}
@@ -480,8 +480,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1792714846}
-  m_LocalRotation: {x: 0.19999489, y: 0.019944115, z: -0.0040719113, w: 0.97958547}
-  m_LocalPosition: {x: -0.19105303, y: 2, z: -4.689998}
+  m_LocalRotation: {x: 0.19491754, y: 0.23103265, z: -0.045019902, w: 0.95215774}
+  m_LocalPosition: {x: 23.84478, y: 7.043185, z: 91.330154}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1605713309}
@@ -2195,11 +2195,12 @@ MonoBehaviour:
   RR: {fileID: 6655036742197868101}
   RL: {fileID: 190102073186835297}
   carSpeed: {fileID: 0}
-  centerOfMass: {x: 0.12, y: 0, z: -0.13}
+  centerOfMass: {x: 0.12, y: -0.168, z: -0.13}
   maxTransmission: 5
   slowing: 200
   steer: 25
   stopTorque: 2000
+  mass: []
   brakeForce: 0
   StopForce: 0
   StartForce: 0

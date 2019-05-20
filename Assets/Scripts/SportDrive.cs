@@ -17,19 +17,12 @@ public class SportDrive : MonoBehaviour
 
     public int maxTransmission = 5;
     private float v;
-    public float slowing = 0;
-    public float steer = 0;
-    public float stopTorque = 0;
+    public float slowing = 200;
+    public float steer = 25;
+    public float stopTorque = 2000;
     private int curentTransmission = 1;
 
-    Transmission back = new Transmission(0.0f, -80.0f, 1700);//300
-    Transmission first = new Transmission(0.0f, 500, 1000);//400
-    Transmission second = new Transmission(500, 900, 500);//500
-    Transmission third = new Transmission(900, 1200, 350);//550
-    Transmission fourth = new Transmission(1200, 1600, 300);//600
-    Transmission fifth = new Transmission(1600, 1800, 250);//650
-    Transmission sixth = new Transmission(1800, 2000, 200);//700
-    Transmission[] mass;
+    public Transmission[] mass;
 
     public float brakeForce = 0f;
     public float StopForce = 0f;
@@ -59,7 +52,11 @@ public class SportDrive : MonoBehaviour
     float b;
     float carVelocity;
     float mSteerAngle;
-    
+    void Start()
+    {
+        carBody = GetComponent<Rigidbody>();
+        GetComponent<Rigidbody>().centerOfMass = centerOfMass;
+    }
     void Update()
     {
         Ext();
@@ -78,12 +75,6 @@ public class SportDrive : MonoBehaviour
         m_carSpeed = 2 * Mathf.PI * FR.radius * FR.rpm * 60 / 1000;
         carSpeed.text = "" + m_carSpeed;
     }
-    void Start()
-    {
-        mass = new Transmission[] { back, first, second, third, fourth, fifth, sixth };
-        carBody = GetComponent<Rigidbody>();
-        GetComponent<Rigidbody>().centerOfMass = centerOfMass;
-    }
 
     //Transmission    
     void Transmission()
@@ -100,6 +91,7 @@ public class SportDrive : MonoBehaviour
             {
                 if (curentTransmission<maxTransmission)
                 {
+                    Debug.Log(curentTransmission + "   " + gameObject.name);
                     curentTransmission++;
                 }
                 else
