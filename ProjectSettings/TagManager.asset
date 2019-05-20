@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Camera
+  - Player Point
+  - Race AI
+  - ItemSelection
+  - Road
+  - Terrain
   layers:
   - Default
   - TransparentFX

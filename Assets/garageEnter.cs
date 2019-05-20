@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class garageEnter : MonoBehaviour
 {
-    public GameObject GarageIcon;
+    public GarageScript gs;
+
+    public GameObject garage;
     public GameObject RaceIcon;
+    public GameObject InGameUI;
+    public GameObject garageUI;
+    public GameObject GarageIcon;
     void OnTriggerEnter(Collider col)
     {
         if(col.tag == "Player")
@@ -21,7 +26,15 @@ public class garageEnter : MonoBehaviour
         {
             if (Input.GetKeyUp(KeyCode.E))
             {
-                SceneManager.LoadScene("GarageScene");
+                gs.realCars[gs.selectedCar].SetActive(false);
+                for(int i =0;i< gs.realCars.Length; i++)
+                {
+                    gs.realCars[i].transform.rotation = Quaternion.Euler(0, -93f, 0);
+                }
+                //TocusCar.SetActive(false);
+                InGameUI.SetActive(false);
+                garage.SetActive(true);
+                garageUI.SetActive(true);
             }
         }
     }
@@ -31,6 +44,10 @@ public class garageEnter : MonoBehaviour
         if (col.tag == "Player")
         {
             HideIcon(1);
+        }
+        else
+        {
+            Debug.Log("NOTTTT !!! HIDINH ICON" + col.name);
         }
     }
 

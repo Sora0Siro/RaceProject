@@ -7,7 +7,7 @@ public class ChangeCamera : MonoBehaviour
     public GameObject[] camerasObj;
     private int previousCamNumber = 0;
     private int lastcam = 0;
-    Camera[] cameras;
+    public Camera[] cameras;
     int choosedCamera = 0;
     void Start()
     {
